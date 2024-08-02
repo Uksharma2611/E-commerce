@@ -4,7 +4,6 @@ import Footer from "./Footer";
 import { Helmet } from "react-helmet";
 import { Toaster } from 'react-hot-toast';
 
-
 const layout = ({ children, title, description, keywords, author }) => {
   return (
     <div>
@@ -18,8 +17,9 @@ const layout = ({ children, title, description, keywords, author }) => {
         <title>{title}</title>
       </Helmet>
       <main style={{ minHeight: "70vh" }}>
-      <Toaster />
-        {children}</main>
+        <Toaster duration={5000} batching={false} /> 
+        {children}
+      </main>
       <Footer />
     </div>
   );
