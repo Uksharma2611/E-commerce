@@ -10,10 +10,6 @@ export default function AdminRoute() {
 
     useEffect(() => {
         const authCheck = async () => {
-            const token = auth?.token;
-            if (token) {
-              axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-            }
           const res = await axios.get("/api/v1/auth/admin-auth");
           if (res.data.ok) {
             setOk(true);
