@@ -3,8 +3,11 @@ import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { Select } from "antd";
 import { Modal } from "antd";
 import CategoryForm from "../../components/Form/CategoryForm";
+
+const { Option } = Select;
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -36,7 +39,7 @@ const CreateCategory = () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
       if (data.success) {
-        setCategories(data.category);
+        setCategories(data?.category);
       }
     } catch (error) {
       console.log(error);
