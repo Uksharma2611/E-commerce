@@ -1,0 +1,111 @@
+/* Global Styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Product Details */
+
+.product-details {
+    margin-left: 80px;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* width: 100%;
+  max-width: 100%; */
+  border-radius: 20px;
+}
+
+.product-details img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 300px; /* adjust the max-height value as needed */
+    border-radius: 10px 10px 0 0;
+  }
+
+.product-details-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-details-info h6 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Similar Products */
+
+.similar-products {
+  padding: 20px;
+  
+}
+
+.similar-products .card {
+  background-color: #fff;
+  width: 18rem;
+  margin: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.similar-products .card-name-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.similar-products .card-price {
+  color: #008000;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.similar-products .card-text {
+  color: #666;
+  font-size: 14px;
+  padding: 10px;
+}
+
+.similar-products button {
+  border-radius: 20px;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.similar-products .card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.similar-products .card img:hover {
+  transform: scale(0.9);
+}

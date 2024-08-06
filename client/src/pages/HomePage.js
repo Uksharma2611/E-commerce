@@ -147,7 +147,12 @@ const HomePage = () => {
                   <h5 className="card-title">{p.name}</h5>
                   <p className="card-text">{p.description}</p>
                   <p className="card-text">Rs.{p.price}</p>
-                  <button class="btn btn-primary ms-1">More Details</button>
+                  <button
+                      className="btn btn-info ms-1"
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More Details
+                    </button>
                   <button class="btn btn-secondary ms-1">Add To Cart</button>
                 </div>
               </div>
