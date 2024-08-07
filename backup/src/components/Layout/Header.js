@@ -3,9 +3,11 @@ import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from "../../context/auth";
 import { GiShoppingBag } from 'react-icons/gi';
 import { toast } from 'react-hot-toast';
+import useCategory from '../../;
 
 const Header = () => {
   const { auth, setAuth } = useAuth();
+  const categories=useCategory();
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -30,6 +32,8 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink exact to="/" className="nav-link">Home</NavLink>
               </li>
+              
+
               <li className="nav-item">
                 <NavLink exact to="/category" className="nav-link">Category</NavLink>
               </li>

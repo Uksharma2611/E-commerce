@@ -89,13 +89,11 @@ body {
 .similar-products button {
   border-radius: 20px;
   width: 100%;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px;
   font-size: 14px;
   font-weight: bold;
   background-color: #333;
   color: #fff;
-  padding: 10px;
+  padding: 7px;
   cursor: pointer;
 }
 
