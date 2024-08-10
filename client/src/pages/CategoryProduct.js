@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useParams, useNavigate } from "react-router-dom";
-// import "../styles/CategoryProductStyles.css";
 import axios from "axios";
+import { useCart } from "../context/cart"; // Import the custom hook
+import { toast } from "react-toastify";
+
 const CategoryProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const [cart, setCart] = useCart(); // Destructure the cart and setCart from useCart
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
     if (params?.slug) getPrductsByCat();
   }, [params?.slug]);
+
   const getPrductsByCat = async () => {
     try {
       const { data } = await axios.get(
@@ -22,6 +26,20 @@ const CategoryProduct = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // Handle Add to Cart
+  const addToCart = (product) => {
+    let existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Create a new cart item for each addition
+    const newCartItem = { ...product, quantity: 1 };
+    existingCart.push(newCartItem);
+    
+    // Update the cart state with the new quantity
+    setCart(existingCart);
+    localStorage.setItem("cart", JSON.stringify(existingCart)); // Persist the cart in local storage
+    toast.success("Item added to cart");
   };
 
   return (
@@ -60,18 +78,11 @@ const CategoryProduct = () => {
                         More Details
                       </button>
                       <button
-                    className="btn btn-dark ms-1"
-                    // onClick={() => {
-                    //   setCart([...cart, p]);
-                    //   localStorage.setItem(
-                    //     "cart",
-                    //     JSON.stringify([...cart, p])
-                    //   );
-                    //   toast.success("Item Added to cart");
-                    // }}
-                  >
-                    ADD TO CART
-                  </button>
+                        className="btn btn-dark ms-1"
+                        onClick={() => addToCart(p)}
+                      >
+                        ADD TO CART
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -3,18 +3,22 @@ import Layout from "./../components/Layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
+import { useCart } from "../context/cart"; // Import the custom hook
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const [cart, setCart] = useCart(); // Destructure the cart and setCart from useCart
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
 
-  //initalp details
+  // Initial product details
   useEffect(() => {
     if (params?.slug) getProduct();
   }, [params?.slug]);
-  //getProduct
+
+  // Get the product details
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
@@ -26,7 +30,8 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
-  //get similar product
+
+  // Get similar products
   const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
@@ -37,6 +42,21 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
+
+  // Handle Add to Cart
+  const addToCart = (product) => {
+    let existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Create a new cart item for each addition
+    const newCartItem = { ...product, quantity: 1 };
+    existingCart.push(newCartItem);
+    
+    // Update the cart state with the new quantity
+    setCart(existingCart);
+    localStorage.setItem("cart", JSON.stringify(existingCart)); // Persist the cart in local storage
+    toast.success("Item added to cart");
+  };
+
   return (
     <Layout>
       <div className="row container product-details">
@@ -45,23 +65,27 @@ const ProductDetails = () => {
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
             alt={product.name}
-            
           />
         </div>
         <div className="col-md-6 product-details-info">
           <h1 className="text-center">Product Details</h1>
           <hr />
-          <h6>Name : {product.name}</h6>
-          <h6>Description : {product.description}</h6>
+          <h6>Name: {product.name}</h6>
+          <h6>Description: {product.description}</h6>
           <h6>
-            Price :
+            Price:
             {product?.price?.toLocaleString("en-US", {
               style: "currency",
               currency: "INR",
             })}
           </h6>
-          <h6>Category : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1">ADD TO CART</button>
+          <h6>Category: {product?.category?.name}</h6>
+          <button
+            className="btn btn-secondary ms-1"
+            onClick={() => addToCart(product)}
+          >
+            ADD TO CART
+          </button>
         </div>
       </div>
       <hr />
@@ -99,18 +123,11 @@ const ProductDetails = () => {
                     More Details
                   </button>
                   <button
-                  className="btn btn-dark ms-1"
-                  // onClick={() => {
-                  //   setCart([...cart, p]);
-                  //   localStorage.setItem(
-                  //     "cart",
-                  //     JSON.stringify([...cart, p])
-                  //   );
-                  //   toast.success("Item Added to cart");
-                  // }}
-                >
-                  ADD TO CART
-                </button>
+                    className="btn btn-dark ms-1"
+                    onClick={() => addToCart(p)}
+                  >
+                    ADD TO CART
+                  </button>
                 </div>
               </div>
             </div>
