@@ -6,6 +6,7 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../../../client/src/context/cart";
 import { Badge } from "antd";
+import "../../styles/Header.css"
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -37,11 +38,11 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-            🛒 E-commerce App
+            🛒 E-Kart
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <SearchInput />
-              <li className="nav-item">
+              <SearchInput s/>
+              <li className="nav-item ms-3">
                 <NavLink to="/" className="nav-link">
                   Home
                 </NavLink>
@@ -91,7 +92,6 @@ const Header = () => {
                   <li className="nav-item dropdown">
                     <NavLink
                       className="nav-link dropdown-toggle"
-                      href="#"
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"

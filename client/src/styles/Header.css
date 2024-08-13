@@ -1,0 +1,216 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .navbar {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .navbar-brand:hover {
+    color: #007bff;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    color: #555;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    outline: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  .dropdown-menu {
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem;
+  }
+  
+  .dropdown-item {
+    font-size: 0.95rem;
+    color: #333;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f8f8f8;
+    color: #007bff;
+  }
+  
+  .badge {
+    background-color: #ff4500;
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    border-radius: 50%;
+  }
+  
+  /* Media Queries for Responsive Design */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      margin-top: 1rem;
+    }
+  
+    .nav-link {
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+    }
+  
+    .navbar-toggler-icon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .navbar-brand {
+      font-size: 1.3rem;
+    }
+  
+    .nav-link {
+      font-size: 1rem;
+    }
+  
+    .dropdown-menu {
+      width: 100%;
+    }
+  
+    .dropdown-item {
+      padding: 0.6rem 1rem;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .navbar {
+      padding: 0.8rem 1rem;
+    }
+  
+    .navbar-brand {
+      font-size: 1.2rem;
+    }
+  
+    .nav-link {
+      font-size: 0.9rem;
+    }
+  
+    .dropdown-item {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Additional Hover Effects */
+  .navbar .navbar-nav .nav-link.active,
+  .navbar .navbar-nav .nav-link:focus {
+    color: #007bff;
+    background-color: #e9ecef;
+    border-radius: 5px;
+  }
+  
+  .dropdown-menu .dropdown-item.active,
+  .dropdown-menu .dropdown-item:focus {
+    color: #ffffff;
+    background-color: #007bff;
+  }
+  /* Search Bar Styling */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.search-bar input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+  background-color: #ffffff;
+}
+
+.search-bar button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+.search-bar button i {
+  font-size: 1.2rem;
+}
+
+/* Responsive Search Bar */
+@media (max-width: 575px) {
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .search-bar input[type="text"] {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .search-bar button {
+    width: 30px;
+    height: 30px;
+  }
+}

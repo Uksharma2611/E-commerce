@@ -1,0 +1,42 @@
+/* Layout.css */
+header {
+    background-color: #1c1c1c; /* Dark header background */
+    color: #ffffff; /* White text in header */
+    padding: 10px 0;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  footer {
+    background-color: #1c1c1c; /* Dark footer background */
+    color: #ffffff; /* White text in footer */
+    padding: 10px 0;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  /* Adjust links */
+  a {
+    color: #bb86fc; /* Light purple color for links */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  a:hover {
+    color: #ff79c6; /* Slightly lighter color on hover */
+  }
+  
+  /* Toaster styles for react-hot-toast */
+  .toast {
+    background-color: #333; /* Dark background for toast notifications */
+    color: #ffffff; /* White text color for toast notifications */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
