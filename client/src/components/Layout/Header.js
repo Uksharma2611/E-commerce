@@ -24,7 +24,10 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg " style={{backgroundColor:"#2874f0"}}>
+      <nav
+        className="navbar navbar-expand-lg "
+        style={{ backgroundColor: "#2874f0" }}
+      >
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -38,17 +41,19 @@ const Header = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand" style={{color:"white"}}>
-            <TiShoppingCart />  E-Commerce
+            <Link to="/" className="navbar-brand" style={{ color: "white" }}>
+              <TiShoppingCart /> E-Commerce
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <SearchInput s/>
-              <li className="nav-item ms-3">
+              <div className="search-container">
+                <SearchInput />
+              </div>
+              <li className="nav-item ms-3 me-3">
                 <NavLink to="/" className="nav-link">
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown me-3">
                 <Link
                   className="nav-link dropdown-toggle"
                   to={"/categories"}
@@ -56,7 +61,7 @@ const Header = () => {
                 >
                   Categories
                 </Link>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu me-3">
                   <li>
                     <Link className="dropdown-item" to={"/categories"}>
                       All Categories
@@ -90,7 +95,7 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <li className="nav-item dropdown">
+                  <li className="nav-item dropdown me-3">
                     <NavLink
                       className="nav-link dropdown-toggle"
                       role="button"
@@ -124,10 +129,15 @@ const Header = () => {
                 </>
               )}
 
-              <li className="nav-item">
+              <li className="nav-item me-3">
                 <Badge count={cart?.length} showZero>
-                  <NavLink to="/cart" className="nav-link" href="#" style={{fontSize:"20px",fontFamily: "Playfair Display"}}>
-                  <TiShoppingCart /> Cart
+                  <NavLink
+                    to="/cart"
+                    className="nav-link"
+                    href="#"
+                    style={{ fontSize: "20px", fontFamily: "Playfair Display" }}
+                  >
+                    <TiShoppingCart /> Cart
                   </NavLink>
                 </Badge>
               </li>

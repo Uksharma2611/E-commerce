@@ -22,7 +22,17 @@ body {
     transition: color 0.3s ease;
     text-decoration: none;
   }
-  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    margin: 0.2rem 10px;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+  }
+
   .navbar-brand:hover {
     color: #007bff;
   }
@@ -145,26 +155,26 @@ body {
     background-color: #007bff;
   }
   /* Search Bar Styling */
-.search-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
+  .search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 2rem; /* Increased width to 500px */
+    margin: 0 auto;
+  }
+  
+  .search-bar input[type="text"] {
+    width: 100%; /* Set width to 100% to fill the container */
+    padding: 0.8rem 1.2rem; /* Increased padding for a larger input field */
+    font-size: 1.2rem; /* Increased font size for better readability */
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f9f9f9;
+  }
 
-.search-bar input[type="text"] {
-  width: 100%;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border: 2px solid #ddd;
-  border-radius: 50px;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: #f9f9f9;
-}
 
 .search-bar input[type="text"]:focus {
   border-color: #007bff;
