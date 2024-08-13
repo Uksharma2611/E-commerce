@@ -20,7 +20,7 @@ const app = express();
 //middleware
 app.use(cors());
 app.use(express.json());
-app.use(morgan('combined')); // Fixed the missing parenthesis here
+app.use(morgan("dev")); // Fixed the missing parenthesis here
 
 //routes
 app.use("/api/v1/auth", authRoutes);
@@ -38,7 +38,7 @@ const PORT = process.env.PORT || 8080;
 //run listen
 app.listen(PORT, () => {
   console.log(
-    `Server Running in ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
+    `Server Running ${process.env.DEV_MODE} on mode on port ${PORT}`.bgCyan
       .white
   );
 });
