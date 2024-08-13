@@ -9,16 +9,15 @@ import toast from "react-hot-toast";
 import "../styles/HomePage.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import shoe1 from "../images/shoe1.jpg";
-import shoe2 from "../images/teddy1.jpg";
-import shoe3 from "../images/img3.jpg";
-import img1 from "../images/foot.jpg";
-import img2 from "../images/ski.jpg";
+import shoe1 from "../images/cr1.png";
+import shoe2 from "../images/cr2.jpeg";
+import shoe3 from "../images/cr3.jpeg"
+import img1 from "../images/cr4.jpeg";
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 2,
+    items: 1,
     slidesToSlide: 1, // optional, default to 1.
   },
   tablet: {
@@ -148,7 +147,7 @@ const HomePage = () => {
         ssr={true}
         infinite={true}
         autoPlay={true}
-        autoPlaySpeed={4000}
+        autoPlaySpeed={2000}
         keyBoardControl={true}
         customTransition="all .5"
         transitionDuration={500}
@@ -181,14 +180,8 @@ const HomePage = () => {
        
           className="my-image-class"
         />
-        <img
-          src={img2}
-          alt="2"
-        
-          className="my-image-class"
-        />
+  
       </Carousel>
-      ;
       <div className="row mt-3">
         <div className="col-md-3">
           <h4 className="text-center">Filter By Category</h4>
@@ -226,7 +219,7 @@ const HomePage = () => {
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
-              <div className="card m-2" style={{ width: "19rem" }}>
+              <div className="card m-2 " style={{ width: "19rem", marginRight: "10px" }}>
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
@@ -234,8 +227,9 @@ const HomePage = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
+                  <p className="card-text" style={{color:"black"}}>Rs.{p.price}</p>
                   <p className="card-text">{p.description}</p>
-                  <p className="card-text">Rs.{p.price}</p>
+                  
                   <button
                     className="btn btn-info ms-1"
                     onClick={() => navigate(`/product/${p.slug}`)}
@@ -253,7 +247,7 @@ const HomePage = () => {
                       toast.success("Item Added to cart");
                     }}
                   >
-                    Add To Cart
+                   🛒 Add To Cart
                   </button>
                 </div>
               </div>

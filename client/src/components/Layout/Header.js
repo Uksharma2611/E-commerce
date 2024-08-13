@@ -6,7 +6,8 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../../../client/src/context/cart";
 import { Badge } from "antd";
-import "../../styles/Header.css"
+import "../../styles/Header.css";
+import { TiShoppingCart } from "react-icons/ti";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -23,7 +24,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg " style={{backgroundColor:"#2874f0"}}>
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -37,8 +38,8 @@ const Header = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-            🛒 E-Kart
+            <Link to="/" className="navbar-brand" style={{color:"white"}}>
+            <TiShoppingCart />  E-Commerce
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput s/>
@@ -125,8 +126,8 @@ const Header = () => {
 
               <li className="nav-item">
                 <Badge count={cart?.length} showZero>
-                  <NavLink to="/cart" className="nav-link" href="#">
-                    Cart
+                  <NavLink to="/cart" className="nav-link" href="#" style={{fontSize:"20px",fontFamily: "Playfair Display"}}>
+                  <TiShoppingCart /> Cart
                   </NavLink>
                 </Badge>
               </li>

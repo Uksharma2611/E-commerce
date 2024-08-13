@@ -6,7 +6,7 @@ body {
   }
   
   .navbar {
-    background-color: #f8f9fa;
+    background-color: #6666;
     border-bottom: 2px solid #e0e0e0;
     padding: 1rem;
     position: sticky;
@@ -17,7 +17,7 @@ body {
   .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
-    color: #333;
+    color: white;
     text-transform: uppercase;
     transition: color 0.3s ease;
     text-decoration: none;
@@ -29,7 +29,7 @@ body {
   
   .nav-link {
     font-size: 1rem;
-    color: #555;
+    color: white;
     padding: 0.5rem 1rem;
     transition: color 0.3s ease, background-color 0.3s ease;
     text-decoration: none; /* Remove underline */
@@ -177,7 +177,7 @@ body {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #007bff;
+  background-color: aqua !important;
   color: #fff;
   border: none;
   border-radius: 50%;
