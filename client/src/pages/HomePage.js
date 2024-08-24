@@ -11,7 +11,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import shoe1 from "../images/cr1.png";
 import shoe2 from "../images/cr2.jpeg";
-import shoe3 from "../images/cr3.jpeg"
+import shoe3 from "../images/cr3.jpeg";
 import img1 from "../images/cr4.jpeg";
 
 const responsive = {
@@ -43,7 +43,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  //get all cat
+  // Get all categories
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
@@ -54,12 +54,13 @@ const HomePage = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getAllCategory();
     getTotal();
   }, []);
 
-  //get products
+  // Get products
   const getAllProducts = async () => {
     try {
       setLoading(true);
@@ -71,7 +72,8 @@ const HomePage = () => {
       console.log(error);
     }
   };
-  //getTOtal COunt
+
+  // Get total count
   const getTotal = async () => {
     try {
       const { data } = await axios.get("/api/v1/product/product-count");
@@ -85,7 +87,8 @@ const HomePage = () => {
     if (page === 1) return;
     loadMore();
   }, [page]);
-  //load more
+
+  // Load more products
   const loadMore = async () => {
     try {
       setLoading(true);
@@ -98,7 +101,7 @@ const HomePage = () => {
     }
   };
 
-  // filter by cat
+  // Filter by category
   const handleFilter = (value, id) => {
     let all = [...checked];
     if (value) {
@@ -117,7 +120,7 @@ const HomePage = () => {
     if (checked.length || radio.length) filterProduct();
   }, [checked, radio]);
 
-  //get filterd product
+  // Get filtered products
   const filterProduct = async () => {
     try {
       const { data } = await axios.post("/api/v1/product/product-filters", {
@@ -129,7 +132,8 @@ const HomePage = () => {
       console.log(error);
     }
   };
-  var settings = {
+
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -156,31 +160,10 @@ const HomePage = () => {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        <img
-          src={shoe1}
-          alt="1"
-    
-          className="my-image-class"
-        />
-        <img
-          src={shoe2}
-          alt="2"
-       
-          className="my-image-class"
-        />
-        <img
-          src={shoe3}
-          alt="2"
-        
-          className="my-image-class"
-        />
-        <img
-          src={img1}
-          alt="2"
-       
-          className="my-image-class"
-        />
-  
+        <img src={shoe1} alt="1" className="my-image-class" />
+        <img src={shoe2} alt="2" className="my-image-class" />
+        <img src={shoe3} alt="3" className="my-image-class" />
+        <img src={img1} alt="4" className="my-image-class" />
       </Carousel>
       <div className="row mt-3">
         <div className="col-md-3">
@@ -208,7 +191,11 @@ const HomePage = () => {
           <div className="d-flex flex-column">
             <button
               className="btn btn-danger"
-              onClick={() => window.location.reload()}
+              onClick={() => {
+                setChecked([]);
+                setRadio([]);
+                getAllProducts(); // Fetch all products without filters
+              }}
             >
               RESET FILTERS
             </button>
@@ -216,12 +203,19 @@ const HomePage = () => {
         </div>
 
         <div className="col-md-9">
-        <div className="col-md-11">
-        <h1 className="bg-dark p-2 text-white text-center" style={{borderRadius:"20px"}}>All Products</h1>
-        </div>
+          <div className="col-md-11">
+            <h1 className="bg-dark p-2 text-white text-center" style={{ borderRadius: "20px" }}>
+              All Products
+            </h1>
+          </div>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
-              <div className="card m-2 " style={{ width: "18.5rem", marginRight: "15px" }}>
+              <div
+                className="card m-2"
+                style={{ width: "18.5rem", marginRight: "15px", cursor: "pointer" }}
+                onClick={() => navigate(`/product/${p.slug}`)}
+                key={p._id}
+              >
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
@@ -229,27 +223,27 @@ const HomePage = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text" style={{color:"black"}}>Rs.{p.price}</p>
+                  <p className="card-text" style={{ color: "black" }}>Rs.{p.price}</p>
                   <p className="card-text">{p.description.substring(0, 30)}...</p>
-                  
                   <button
                     className="btn btn-info ms-0"
-                    onClick={() => navigate(`/product/${p.slug}`)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card click event
+                      navigate(`/product/${p.slug}`);
+                    }}
                   >
                     More Details
                   </button>
                   <button
-                    class="btn btn-secondary ms-1"
-                    onClick={() => {
+                    className="btn btn-secondary ms-1"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card click event
                       setCart([...cart, p]);
-                      localStorage.setItem(
-                        "cart",
-                        JSON.stringify([...cart, p])
-                      );
+                      localStorage.setItem("cart", JSON.stringify([...cart, p]));
                       toast.success("Item Added to cart");
                     }}
                   >
-                   🛒 Add To Cart
+                    🛒 Add To Cart
                   </button>
                 </div>
               </div>
@@ -264,7 +258,7 @@ const HomePage = () => {
                   setPage(page + 1);
                 }}
               >
-                {loading ? "Loading..." : "Loadmore"}
+                {loading ? "Loading..." : "Load more"}
               </button>
             )}
           </div>

@@ -29,10 +29,8 @@ const SearchInput = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get(
-        `/api/v1/product/search/${values.keyword}`
-      );
-      setValues({ ...values, results: data });
+      const { data } = await axios.get(`/api/v1/product/search/${values.keyword}`);
+      setValues({ ...values, results: data, keyword: "" }); // Clear the search box
       navigate("/search");
     } catch (error) {
       console.log(error);

@@ -18,6 +18,11 @@ const ProductDetails = () => {
     if (params?.slug) getProduct();
   }, [params?.slug]);
 
+  // Scroll to top when product changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product]);
+
   // Get the product details
   const getProduct = async () => {
     try {
@@ -59,12 +64,11 @@ const ProductDetails = () => {
 
   return (
     <Layout>
-      <div className="row container product-details" >
-        <div className="col-md-6" >
+      <div className="row container product-details">
+        <div className="col-md-6">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
-
             alt={product.name}
           />
         </div>
@@ -82,7 +86,7 @@ const ProductDetails = () => {
           </h6>
           <h6>Category: {product?.category?.name}</h6>
           <button
-            className="btn btn-secondary ms-1"
+            className="btn btn-primary ms-1"
             onClick={() => addToCart(product)}
           >
             ADD TO CART
@@ -97,7 +101,12 @@ const ProductDetails = () => {
         )}
         <div className="d-flex flex-wrap">
           {relatedProducts?.map((p) => (
-            <div className="card m-2" key={p._id}>
+            <div
+              className="card m-2"
+              key={p._id}
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate(`/product/${p.slug}`)}
+            >
               <img
                 src={`/api/v1/product/product-photo/${p._id}`}
                 className="card-img-top"
@@ -113,19 +122,25 @@ const ProductDetails = () => {
                     })}
                   </h5>
                 </div>
-                <p className="card-text ">
+                <p className="card-text">
                   {p.description.substring(0, 60)}...
                 </p>
                 <div className="card-name-price">
                   <button
                     className="btn btn-info ms-1"
-                    onClick={() => navigate(`/product/${p.slug}`)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent the card click event
+                      navigate(`/product/${p.slug}`);
+                    }}
                   >
                     More Details
                   </button>
                   <button
                     className="btn btn-dark ms-1"
-                    onClick={() => addToCart(p)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent the card click event
+                      addToCart(p);
+                    }}
                   >
                     ADD TO CART
                   </button>
