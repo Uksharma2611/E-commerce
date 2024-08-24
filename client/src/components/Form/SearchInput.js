@@ -41,6 +41,7 @@ const SearchInput = () => {
 
   const handleSuggestionClick = (slug) => {
     navigate(`/product/${slug}`);
+    setValues({ ...values, keyword: "" }); // Clear the search box
   };
 
   return (
