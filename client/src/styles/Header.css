@@ -238,6 +238,7 @@ body {
 
 .suggestions-list li {
   padding: 8px;
+  margin-right: 69px;
   cursor: pointer;
 }
 
