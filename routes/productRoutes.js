@@ -14,6 +14,7 @@ import {
   productPhotoController,
   realtedProductController,
   searchProductController,
+  searchSuggestionsController,
   updateProductController,
 } from "../controllers/productController.js";
 import formidable from "express-formidable";
@@ -73,6 +74,12 @@ router.get("/braintree/token", braintreeTokenController);
 
 //payments
 router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
+
+// productRoutes.js
+
+// Add this route for search suggestions
+router.get("/search-suggestions", searchSuggestionsController);
+
 
 
 export default router;

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
 import { useCart } from "../context/cart"; // Import the custom hook
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -59,11 +59,12 @@ const ProductDetails = () => {
 
   return (
     <Layout>
-      <div className="row container product-details">
-        <div className="col-md-6">
+      <div className="row container product-details" >
+        <div className="col-md-6" >
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
+
             alt={product.name}
           />
         </div>

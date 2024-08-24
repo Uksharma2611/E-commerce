@@ -147,7 +147,7 @@ const HomePage = () => {
         ssr={true}
         infinite={true}
         autoPlay={true}
-        autoPlaySpeed={2000}
+        autoPlaySpeed={3000}
         keyBoardControl={true}
         customTransition="all .5"
         transitionDuration={500}
@@ -216,10 +216,12 @@ const HomePage = () => {
         </div>
 
         <div className="col-md-9">
-          <h1 className="text-center">All Products</h1>
+        <div className="col-md-11">
+        <h1 className="bg-dark p-2 text-white text-center" style={{borderRadius:"20px"}}>All Products</h1>
+        </div>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
-              <div className="card m-2 " style={{ width: "19rem", marginRight: "10px" }}>
+              <div className="card m-2 " style={{ width: "18.5rem", marginRight: "15px" }}>
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
@@ -231,7 +233,7 @@ const HomePage = () => {
                   <p className="card-text">{p.description.substring(0, 30)}...</p>
                   
                   <button
-                    className="btn btn-info ms-1"
+                    className="btn btn-info ms-0"
                     onClick={() => navigate(`/product/${p.slug}`)}
                   >
                     More Details

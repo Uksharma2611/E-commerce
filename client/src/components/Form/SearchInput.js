@@ -1,10 +1,32 @@
-import React from "react";
+// searchInput.js
+
+import { useState, useEffect } from "react";
 import { useSearch } from "../../context/search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 const SearchInput = () => {
   const [values, setValues] = useSearch();
+  const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      if (values.keyword.length >= 3) {
+        try {
+          const { data } = await axios.get(
+            `/api/v1/product/search-suggestions?keyword=${values.keyword}`
+          );
+          setSuggestions(data.suggestions);
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        setSuggestions([]);
+      }
+    };
+    fetchSuggestions();
+  }, [values.keyword]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +40,7 @@ const SearchInput = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
       <form
@@ -37,6 +60,13 @@ const SearchInput = () => {
           Search
         </button>
       </form>
+      {suggestions.length > 0 && (
+        <ul className="suggestions-list">
+          {suggestions.map((suggestion, index) => (
+            <li key={index}>{suggestion.name}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

@@ -375,3 +375,35 @@ export const brainTreePaymentController = async (req, res) => {
     console.log(error);
   }
 };
+
+
+// productController.js
+
+// import productModel from "../models/productModel.js";
+
+// search suggestions
+export const searchSuggestionsController = async (req, res) => {
+  try {
+    const { keyword } = req.query;
+    if (keyword.length < 3) {
+      return res.status(400).send({
+        success: false,
+        message: "Keyword must be at least 3 characters long",
+      });
+    }
+    const suggestions = await productModel.find({
+      name: { $regex: keyword, $options: "i" },
+    }).limit(5);
+    res.status(200).send({
+      success: true,
+      suggestions,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in getting search suggestions",
+      error,
+    });
+  }
+};

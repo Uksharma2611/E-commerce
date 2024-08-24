@@ -174,7 +174,8 @@ const CartPage = () => {
                     <h4>Current Address</h4>
                     <h5>{auth?.user?.address}</h5>
                     <button
-                      className="btn btn-outline-warning"
+                      className="btn btn-warning"
+                      style={{borderRadius:"20px"}}
                       onClick={() => navigate("/dashboard/user/profile")}
                     >
                       Update Address
@@ -185,14 +186,16 @@ const CartPage = () => {
                 <div className="mb-3">
                   {auth?.token ? (
                     <button
-                      className="btn btn-outline-warning"
+                      className="btn btn-warning"
+                      style={{borderRadius:"20px"}}
                       onClick={() => navigate("/dashboard/user/profile")}
                     >
                       Update Address
                     </button>
                   ) : (
                     <button
-                      className="btn btn-outline-warning"
+                      className="btn btn-warning"
+                      style={{borderRadius:"20px"}}
                       onClick={() =>
                         navigate("/login", {
                           state: "/cart",
