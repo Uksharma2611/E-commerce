@@ -1,5 +1,3 @@
-// searchInput.js
-
 import { useState, useEffect } from "react";
 import { useSearch } from "../../context/search";
 import axios from "axios";
@@ -41,6 +39,10 @@ const SearchInput = () => {
     }
   };
 
+  const handleSuggestionClick = (slug) => {
+    navigate(`/product/${slug}`);
+  };
+
   return (
     <div>
       <form
@@ -56,14 +58,16 @@ const SearchInput = () => {
           value={values.keyword}
           onChange={(e) => setValues({ ...values, keyword: e.target.value })}
         />
-        <button className="btn btn-outline-success bg-white" type="submit" style={{color:"#2874f0"}}>
+        <button className="btn btn-outline-success bg-white" type="submit" style={{ color: "#2874f0" }}>
           Search
         </button>
       </form>
       {suggestions.length > 0 && (
         <ul className="suggestions-list">
-          {suggestions.map((suggestion, index) => (
-            <li key={index}>{suggestion.name}</li>
+          {suggestions.map((suggestion) => (
+            <li key={suggestion._id} onClick={() => handleSuggestionClick(suggestion.slug)}>
+              {suggestion.name}
+            </li>
           ))}
         </ul>
       )}
