@@ -377,10 +377,6 @@ export const brainTreePaymentController = async (req, res) => {
 };
 
 
-// productController.js
-
-// import productModel from "../models/productModel.js";
-
 // search suggestions
 export const searchSuggestionsController = async (req, res) => {
   try {

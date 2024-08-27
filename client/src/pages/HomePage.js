@@ -159,6 +159,7 @@ const HomePage = () => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
+        className="arrow"
       >
         <img src={shoe1} alt="1" className="my-image-class" />
         <img src={shoe2} alt="2" className="my-image-class" />
@@ -204,7 +205,7 @@ const HomePage = () => {
 
         <div className="col-md-9">
           <div className="col-md-11">
-            <h1 className="bg-dark p-2 text-white text-center" style={{ borderRadius: "20px" }}>
+            <h1 className="p-2 text-black text-center">
               All Products
             </h1>
           </div>

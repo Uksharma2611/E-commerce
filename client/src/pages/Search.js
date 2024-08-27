@@ -1,13 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "./../components/Layout/Layout";
 import { useSearch } from "../context/search";
+
 const Search = () => {
   const [values, setValues] = useSearch();
+  const navigate = useNavigate();
+
   return (
     <Layout title={"Search results"}>
-      <div className="container">
+      <div className="container" style={{ position: 'relative' }}>
         <div className="text-center">
-          <h1>Search Resuts</h1>
+          <h1>Search Results</h1>
           <h6>
             {values?.results.length < 1
               ? "No Products Found"
@@ -15,7 +19,7 @@ const Search = () => {
           </h6>
           <div className="d-flex flex-wrap mt-4">
             {values?.results.map((p) => (
-              <div className="card m-2" style={{ width: "20rem" }}>
+              <div key={p._id} className="card m-2" style={{ width: "20rem" }}>
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
@@ -27,13 +31,42 @@ const Search = () => {
                     {p.description.substring(0, 30)}...
                   </p>
                   <p className="card-text"> Rs.{p.price}</p>
-                  <button class="btn btn-primary ms-1">More Details</button>
-                  <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                  <button className="btn btn-primary ms-1">More Details</button>
+                  <button className="btn btn-secondary ms-1">ADD TO CART</button>
                 </div>
               </div>
             ))}
           </div>
         </div>
+        <button
+          className="btn-arrow"
+          onClick={() => navigate("/")}
+        >
+          &larr;
+        </button>
+
+        <style jsx>{`
+          .btn-arrow {
+            background-color: #ffff00;  /* Light yellow */
+            color: black;  /* Black text color for contrast */
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;  /* Rounded small edges */
+            position: absolute;
+            left: 10px;  /* Adjust as needed for positioning */
+            top: 20px;   /* Adjust as needed for positioning */
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          }
+
+          .btn-arrow:hover {
+            background-color: #ffcc00;  /* Darker yellow for hover effect */
+          }
+        `}</style>
       </div>
     </Layout>
   );

@@ -133,9 +133,9 @@ const Header = () => {
                 <Badge count={cart?.length} showZero>
                   <NavLink
                     to="/cart"
-                    className="nav-link"
+                    className="nav-link badge-nav"
                     href="#"
-                    style={{ fontSize: "20px", fontFamily: "Playfair Display" }}
+                    style={{ fontFamily: "Roberto,sans-serif" }}
                   >
                     <TiShoppingCart /> Cart
                   </NavLink>

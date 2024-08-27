@@ -1,16 +1,35 @@
-/* HomePage.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* For Webkit Browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Adjust the width to make the scrollbar narrower */
+    height: 8px; /* Adjust the height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+    background: #f4f7f6; /* Background color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #333; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the handle */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #777; /* Darker color when hovering over the handle */
+}
 
 /* General Styling */
 body {
-    font-family: "Playfair Display";
+    font-family: "Roboto", sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, rgba(0, 112, 133, 0.5), rgba(0, 112, 133, 0.1)) no-repeat center center fixed; 
-               
+    background-color: #f4f7f6;
 }
 
 h1, h4 {
-    color: #333;
+    color: #212529;
 }
 
 .row {
@@ -22,39 +41,72 @@ h1, h4 {
 /* Category and Price Filters */
 .col-md-3 {
     flex: 0 0 23%;
-    background-color: #fff;
+    background-color: #eeeaea;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 3px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-left: 5px solid #2874f0; /* Stand-out effect */
 }
 
-.text-center {
-    text-align: center;
+.col-md-3 h4 {
+    color: #2874f0;
+    font-weight: 500;
+    margin-bottom: 15px;
 }
 
-.d-flex {
-    display: flex;
-    flex-direction: row;
+.col-md-3 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.flex-column {
-    gap: 10px;
+.col-md-3 ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e7e1e1;
+    transition: color 0.3s ease;
+}
+
+.col-md-3 ul li:hover {
+    color: #2874f0;
+    cursor: pointer;
+}
+
+/* Darken Checkboxes and Radio Buttons */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: #777 !important; /* Dark gray color */
+    cursor: pointer;
+    transform: scale(1.1) !important; /* Slightly increase size */
+    transition: transform 0.3s ease;
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+    transform: scale(1.2) !important; /* Increase size on hover */
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: #2874f0; /* Change color when checked */
+    border-color: #2874f0;
 }
 
 
-/* Reset Filters Button */
+/* Filters Reset Button */
 .btn-danger {
     margin-top: 20px;
-    margin-bottom: 20px; /* Add margin below the Reset Filters button */
+    margin-bottom: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: #ff4d4f;
+    border: none;
+    color: #fff;
 }
 
 .btn-danger:hover {
-    background-color: #d9534f;
+    background-color: #e04344;
     transform: translateY(-2px);
 }
-
 
 /* Product Cards */
 .card {
@@ -62,16 +114,14 @@ h1, h4 {
     overflow: hidden;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
     margin-right: 2.25rem !important;
+    background-color: #eeeaea;
+    margin-bottom: 30px !important;
+  
 }
 
-
-.text-center {
-    text-align: center;
-    margin-top: 0;
-}
 .card:hover {
     transform: translateY(-5px) scale(1.03);
 }
@@ -88,9 +138,10 @@ h1, h4 {
 
 .card-body {
     padding: 20px;
-    background-color: #fff;
+    background-color: #eeeaea;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    
 }
 
 .card-title {
@@ -101,7 +152,7 @@ h1, h4 {
 }
 
 .card:hover .card-title {
-    color: #ff6b6b;
+    color: #2874f0;
 }
 
 .card-text {
@@ -122,6 +173,7 @@ h1, h4 {
     background-color: #ffcc00;
     color: #333;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
 }
 
 .btn-warning:hover {
@@ -175,58 +227,61 @@ h1, h4 {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .my-image-class {
+}
+
+.my-image-class {
     margin-top: 10px;
     border-radius: 20px;
     object-fit: cover;
     margin-left: 30px;
-    transition: transform 0.5s ease; /* Add transition effect */
-  }
-  
-  .my-image-class:hover {
-    transform: scale(1.1); /* Add hover effect */
-  }
-  
-  .carousel-image-wrapper:hover .my-image-class {
-    transform: scale(1.05); /* Add hover effect on carousel wrapper */
-  }
-  
-  .carousel-image-wrapper .my-image-class:nth-child(1) {
-    animation: fadeIn 2s; /* Add animation effect */
-  }
-  
-  .carousel-image-wrapper .my-image-class:nth-child(2) {
-    animation: fadeIn 2.5s; /* Add animation effect */
-  }
-  
-  .carousel-image-wrapper .my-image-class:nth-child(3) {
-    animation: fadeIn 3s; /* Add animation effect */
-  }
-  
-  @keyframes fadeIn {
+    transition: transform 0.5s ease;
+}
+
+.my-image-class:hover {
+    transform: scale(1.03);
+}
+
+/* .carousel-image-wrapper:hover .my-image-class {
+    transform: scale(1.05);
+} */
+
+.carousel-image-wrapper .my-image-class:nth-child(1) {
+    animation: fadeIn 2s;
+}
+
+.carousel-image-wrapper .my-image-class:nth-child(2) {
+    animation: fadeIn 2.5s;
+}
+
+.carousel-image-wrapper .my-image-class:nth-child(3) {
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
 
-  .carousel-item-padding-40-px {
+.carousel-item-padding-40-px {
     padding: 10px;
-  }
-  
-  .carousel-container {
+}
+
+.carousel-container {
     margin: 0;
     padding: 0;
-  }
-  
-  .my-image-class {
+}
+
+.my-image-class {
     width: 100%;
     height: 300px;
-    /* object-fit:; */
     margin: 0;
     padding: 0;
-  }
+}
+
+.arrow {
+    z-index: 0;
+}

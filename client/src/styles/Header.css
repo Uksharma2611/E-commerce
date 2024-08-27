@@ -1,207 +1,191 @@
 /* General Styling */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  .navbar {
-    background-color: #6666;
-    border-bottom: 2px solid #e0e0e0;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: white;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    text-decoration: none;
-  }
-  .search-container {
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    margin: 0.2rem 10px;
-  }
-  .nav-link {
-    display: flex;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+  background-color: #2874f0; /* Flipkart blue */
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1.1rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  height: 40px;
+  margin-right: 8px;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.nav-link {
+  font-family: "Roboto";
+  font-size: 1.2rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  font-weight: bolder !important;
+}
+
+.nav-link:hover {
+  transform: scale(1.05);
+}
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.dropdown-menu {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem;
+}
+
+.dropdown-item {
+  font-size: 0.9rem;
+  color: #333;
+  padding: 0.5rem 1rem;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  transform: scale(1.05);
+  background-color: #f8f8f8;
+}
+
+.badge-nav{
+  font-size: 1.2rem !important;
+  margin-top: 2px !important;
+}
+
+.badge {
+  background-color: #ff4500;
+  color: #ffffff;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 991px) {
+  .navbar-nav {
+    margin-top: 1rem;
   }
 
-  .navbar-brand:hover {
-    color: #007bff;
+  .nav-link {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
   }
-  
+
+  .navbar-toggler-icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
   .nav-link {
     font-size: 1rem;
-    color: white;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    text-decoration: none; /* Remove underline */
-  }
-  
-  .nav-link:hover {
-    color: #007bff;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-  }
-  
-  .navbar-toggler {
-    border: none;
-    outline: none;
-  }
-  
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-  }
-  
-  .dropdown-menu {
-    background-color: #ffffff;
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-    padding: 0.5rem;
-  }
-  
-  .dropdown-item {
-    font-size: 0.95rem;
-    color: #333;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    text-decoration: none; /* Remove underline */
-  }
-  
-  .dropdown-item:hover {
-    background-color: #f8f8f8;
-    color: #007bff;
-  }
-  
-  .badge {
-    background-color: #ff4500;
-    color: #ffffff;
-    font-size: 0.9rem;
-    margin-left: 0.5rem;
-    border-radius: 50%;
-  }
-  
-  /* Media Queries for Responsive Design */
-  @media (max-width: 991px) {
-    .navbar-nav {
-      margin-top: 1rem;
-    }
-  
-    .nav-link {
-      padding: 0.8rem 1.5rem;
-      font-size: 1.1rem;
-    }
-  
-    .navbar-toggler-icon {
-      width: 25px;
-      height: 25px;
-    }
-  }
-  
-  @media (max-width: 767px) {
-    .navbar-brand {
-      font-size: 1.3rem;
-    }
-  
-    .nav-link {
-      font-size: 1rem;
-    }
-  
-    .dropdown-menu {
-      width: 100%;
-    }
-  
-    .dropdown-item {
-      padding: 0.6rem 1rem;
-    }
-  }
-  
-  @media (max-width: 575px) {
-    .navbar {
-      padding: 0.8rem 1rem;
-    }
-  
-    .navbar-brand {
-      font-size: 1.2rem;
-    }
-  
-    .nav-link {
-      font-size: 0.9rem;
-    }
-  
-    .dropdown-item {
-      font-size: 0.9rem;
-    }
-  }
-  
-  /* Additional Hover Effects */
-  .navbar .navbar-nav .nav-link.active,
-  .navbar .navbar-nav .nav-link:focus {
-    color: #007bff;
-    background-color: #e9ecef;
-    border-radius: 5px;
-  }
-  
-  .dropdown-menu .dropdown-item.active,
-  .dropdown-menu .dropdown-item:focus {
-    color: #ffffff;
-    background-color: #007bff;
-  }
-  /* Search Bar Styling */
-  .search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 2rem; /* Increased width to 500px */
-    margin: 0 auto;
-  }
-  
-  .search-bar input[type="text"] {
-    width: 100%; /* Set width to 100% to fill the container */
-    padding: 0.8rem 1.2rem; /* Increased padding for a larger input field */
-    font-size: 1.2rem; /* Increased font size for better readability */
-    border: 2px solid #ddd;
-    border-radius: 50px;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background-color: #f9f9f9;
   }
 
+  .dropdown-menu {
+    width: 100%;
+  }
+
+  .dropdown-item {
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .dropdown-item {
+    font-size: 0.9rem;
+  }
+}
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 600px !important; /* Larger search bar */
+  margin: 0 auto;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
 .search-bar input[type="text"]:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-  background-color: #ffffff;
+  border-color: #ffcc00;
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.25);
 }
 
 .search-bar button {
   position: absolute;
-  right: 10px;
+  right: 5px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: aqua !important;
+  background-color: #ffcc00;
   color: #fff;
   border: none;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  border-radius: 2px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .search-bar button:hover {
-  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 .search-bar button i {
@@ -220,29 +204,28 @@ body {
   }
 
   .search-bar button {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
   }
 }
 
-/* Add this to your CSS file */
+/* Suggestions List */
 .suggestions-list {
   list-style: none;
   padding: 0;
   margin: 0;
   position: absolute;
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: #eeeaea;
+  border: 1px solid #777;
   z-index: 1000;
+  width: 215px; /* Match the search bar width */
 }
 
 .suggestions-list li {
   padding: 8px;
-  margin-right: 69px;
   cursor: pointer;
 }
 
 .suggestions-list li:hover {
   background-color: #f0f0f0;
 }
-
