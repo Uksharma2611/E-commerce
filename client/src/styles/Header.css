@@ -35,7 +35,7 @@ body {
 .nav-link {
   font-family: "Roboto";
   font-size: 1.2rem;
-  color: white;
+  color: white !important;
   padding: 0.5rem 1rem;
   text-decoration: none;
   transition: transform 0.3s ease;
@@ -63,11 +63,13 @@ body {
 }
 
 .dropdown-item {
-  font-size: 0.9rem;
-  color: #333;
+  font-size: 1rem;
+  color: #222;
   padding: 0.5rem 1rem;
   transition: transform 0.3s ease;
   text-decoration: none;
+  font-family: "Roboto";
+  font-weight: "bold" !important;
 }
 
 .dropdown-item:hover {
@@ -142,12 +144,17 @@ body {
 }
 
 /* Search Bar Styling */
+.search-container{
+  width: 500px;
+  margin-right: 70px;
+  margin-top: 3px;
+  font-family: "Roboto";
+}
 .search-bar {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 600px !important; /* Larger search bar */
   margin: 0 auto;
 }
 
@@ -213,12 +220,14 @@ body {
 .suggestions-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2px;
+  margin-left: 2px;
   position: absolute;
   background-color: #eeeaea;
   border: 1px solid #777;
+  border-radius: 5px;
   z-index: 1000;
-  width: 215px; /* Match the search bar width */
+  width: 410px; /* Match the search bar width */
 }
 
 .suggestions-list li {

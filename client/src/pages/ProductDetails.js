@@ -93,6 +93,7 @@ const ProductDetails = () => {
           </button>
         </div>
       </div>
+      <br />
       <hr />
       <div className="row container similar-products">
         <h4>Similar Products ➡️</h4>
@@ -127,7 +128,7 @@ const ProductDetails = () => {
                 </p>
                 <div className="card-name-price">
                   <button
-                    className="btn btn-info ms-1"
+                    className="btn btn-secondary ms-1"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent the card click event
                       navigate(`/product/${p.slug}`);
@@ -136,7 +137,7 @@ const ProductDetails = () => {
                     More Details
                   </button>
                   <button
-                    className="btn btn-dark ms-1"
+                    className="btn btn-primary ms-1"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent the card click event
                       addToCart(p);

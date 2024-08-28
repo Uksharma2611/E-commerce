@@ -169,7 +169,7 @@ const HomePage = () => {
       <div className="row mt-3">
         <div className="col-md-3">
           <h4 className="text-center">Filter By Category</h4>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column filter-font">
             {categories?.map((c) => (
               <Checkbox
                 key={c._id}
@@ -180,7 +180,7 @@ const HomePage = () => {
             ))}
           </div>
           <h4 className="text-center mt-4">Filter By Price</h4>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column filter-font">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => (
                 <div key={p._id}>
@@ -191,7 +191,7 @@ const HomePage = () => {
           </div>
           <div className="d-flex flex-column">
             <button
-              className="btn btn-danger"
+              className="btn btn-danger filter-btn"
               onClick={() => {
                 setChecked([]);
                 setRadio([]);
@@ -205,7 +205,7 @@ const HomePage = () => {
 
         <div className="col-md-9">
           <div className="col-md-11">
-            <h1 className="p-2 text-black text-center">
+            <h1 className="p-2 text-black text-center all">
               All Products
             </h1>
           </div>
@@ -227,7 +227,7 @@ const HomePage = () => {
                   <p className="card-text" style={{ color: "black" }}>Rs.{p.price}</p>
                   <p className="card-text">{p.description.substring(0, 30)}...</p>
                   <button
-                    className="btn btn-info ms-0"
+                    className="btn btn-secondary ms-0"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent card click event
                       navigate(`/product/${p.slug}`);
@@ -236,7 +236,7 @@ const HomePage = () => {
                     More Details
                   </button>
                   <button
-                    className="btn btn-secondary ms-1"
+                    className="btn btn-primary ms-1 addtocart"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent card click event
                       setCart([...cart, p]);

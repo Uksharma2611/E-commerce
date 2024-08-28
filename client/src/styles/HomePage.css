@@ -32,6 +32,10 @@ h1, h4 {
     color: #212529;
 }
 
+.all{
+    color: #2874f0 !important;
+    font-weight: 600 !important;
+}
 .row {
     margin: 0;
     padding: 20px;
@@ -47,11 +51,16 @@ h1, h4 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     border-left: 5px solid #2874f0; /* Stand-out effect */
+    max-height: 415px;
+}
+
+.filter-btn{
+    margin-top: 30px !important;
 }
 
 .col-md-3 h4 {
     color: #2874f0;
-    font-weight: 500;
+    font-weight: 600 !important;
     margin-bottom: 15px;
 }
 
@@ -72,10 +81,14 @@ h1, h4 {
     cursor: pointer;
 }
 
+.filter-font{
+    font-weight: 500 !important;
+}
+
 /* Darken Checkboxes and Radio Buttons */
 input[type="checkbox"],
 input[type="radio"] {
-    accent-color: #777 !important; /* Dark gray color */
+    accent-color: black !important; /* Dark gray color */
     cursor: pointer;
     transform: scale(1.1) !important; /* Slightly increase size */
     transition: transform 0.3s ease;
@@ -126,6 +139,16 @@ input[type="radio"]:checked {
     transform: translateY(-5px) scale(1.03);
 }
 
+.addtocart{
+    background-color: #2874f0;
+    opacity: 0.9;
+}
+
+.addtocart:hover{
+    background-color: #2367d5;
+    transform: scale(1.02);
+}
+
 .card img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -159,6 +182,7 @@ input[type="radio"]:checked {
     font-size: 1rem;
     color: #777;
     margin-bottom: 15px;
+    font-family: "Roboto";
 }
 
 /* Load More Button */
@@ -230,7 +254,7 @@ input[type="radio"]:checked {
 }
 
 .my-image-class {
-    margin-top: 10px;
+    margin-top: 7px;
     border-radius: 20px;
     object-fit: cover;
     margin-left: 30px;

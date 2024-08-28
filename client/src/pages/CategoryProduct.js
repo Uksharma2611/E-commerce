@@ -3,7 +3,9 @@ import Layout from "../components/Layout/Layout";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useCart } from "../context/cart";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
+import "../styles/CategoryProductDisplay.css";
+
 
 const CategoryProduct = () => {
   const params = useParams();
@@ -49,7 +51,7 @@ const CategoryProduct = () => {
         <h6 className="text-center mb-4">{products?.length} result found</h6>
         <div className="row">
           {products?.map((p) => (
-            <div className="col-md-4 mb-4" key={p._id}>
+            <div className="col-md-4 mb-2" key={p._id} style={{width:"400px"}}>
               <div className="card h-100">
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
@@ -68,11 +70,11 @@ const CategoryProduct = () => {
                     </h5>
                   </div>
                   <p className="card-text mb-3 flex-grow-1">
-                    {p.description.substring(0, 60)}...
+                    {p.description.substring(0, 40)}...
                   </p>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex gap-3 ms-4">
                     <button
-                      className="btn btn-info"
+                      className="btn btn-secondary"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details

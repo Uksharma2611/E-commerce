@@ -1,0 +1,66 @@
+*{
+    font-family: "Roboto";
+}
+
+.category {
+    padding: 25px;
+    
+  }
+  
+  .category-card {
+    transition: transform 0.3s ease;
+    border-radius: 20px;
+
+  }
+  
+  .category-card:hover {
+    transform: translateY(-50px);
+  }
+  
+  .card-img-top {
+    object-fit: contain;
+    border-radius: 20px;
+    margin: 0;
+    height: 250px;
+  }
+
+  .more{
+    background-color: rgb(29, 172, 255) !important;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+  }
+  
+  .card-price {
+    font-weight: bold;
+    color: #666;
+  }
+  
+  .btn-info {
+    background-color: #666;
+    border: none;
+  }
+  
+  .btn-info:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-dark {
+    background-color: #2874f0;
+    opacity: 0.9; 
+  }
+  
+  .btn-dark:hover {
+    background-color: #2367d5;
+    transform: scale(1.02);
+  }
+  
