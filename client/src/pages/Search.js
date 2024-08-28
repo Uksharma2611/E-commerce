@@ -47,8 +47,8 @@ const Search = () => {
 
         <style jsx>{`
           .btn-arrow {
-            background-color: #ffff00;  /* Light yellow */
-            color: black;  /* Black text color for contrast */
+            color: black;  
+            background-color: #eeeaea; /* Light gray background */
             border: none;
             padding: 8px 16px;
             border-radius: 8px;  /* Rounded small edges */
@@ -64,7 +64,9 @@ const Search = () => {
           }
 
           .btn-arrow:hover {
-            background-color: #ffcc00;  /* Darker yellow for hover effect */
+            color: #2874f0;  /* Blue color on hover */
+            background-color: #eeeaea; /* Keep the same background color on hover */
+            transform: none; /* Remove the scaling effect */
           }
         `}</style>
       </div>

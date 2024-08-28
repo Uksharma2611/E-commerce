@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { useSearch } from "../../context/search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ const SearchInput = () => {
   const [values, setValues] = useSearch();
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
+  const suggestionsRef = useRef(null);
 
   useEffect(() => {
     const fetchSuggestions = async () => {
@@ -40,7 +41,19 @@ const SearchInput = () => {
   const handleSuggestionClick = (slug) => {
     navigate(`/product/${slug}`);
     setValues({ ...values, keyword: "" }); // Clear the search box
+    setSuggestions([]); // Hide suggestions after selecting
   };
+  const handleClickOutside = (e) => {
+    if (suggestionsRef.current && !suggestionsRef.current.contains(e.target)) {
+      setSuggestions([]);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div>
@@ -49,20 +62,22 @@ const SearchInput = () => {
         role="search"
         onSubmit={handleSubmit}
       >
-        <input
-          className="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          value={values.keyword}
-          onChange={(e) => setValues({ ...values, keyword: e.target.value })}
-        />
+       <input
+  className="form-control me-2"
+  type="search"
+  placeholder="Search"
+  aria-label="Search"
+  value={values.keyword}
+  onChange={(e) => setValues({ ...values, keyword: e.target.value })}
+/>
+
+         
         <button className="btn btn-outline-success bg-white" type="submit" style={{ color: "#2874f0" }}>
           Search
         </button>
       </form>
       {suggestions.length > 0 && (
-        <ul className="suggestions-list">
+        <ul className="suggestions-list" ref={suggestionsRef}>
           {suggestions.map((suggestion) => (
             <li key={suggestion._id} onClick={() => handleSuggestionClick(suggestion.slug)}>
               {suggestion.name}
