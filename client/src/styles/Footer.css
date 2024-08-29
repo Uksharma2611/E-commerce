@@ -5,6 +5,7 @@
     background-color: #000; /* Black background */
     color: white; /* White text color */
     padding: 20px;
+    margin-top: 30px;
     text-align: center;
     position: relative;
     overflow: hidden;

@@ -1,0 +1,15 @@
+.hello:hover{
+    transform: scale(1.0) !important;
+}
+.container:hover{
+    transform: scale(1.0) !important;
+}
+table:hover{
+    transform: scale(1.0) !important;
+}
+.sample:hover{
+    transform: scale(1.0) !important;
+}
+.tr:hover{
+    transform: scale(1.0) !important;
+}

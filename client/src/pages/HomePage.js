@@ -112,6 +112,21 @@ const HomePage = () => {
     setChecked(all);
   };
 
+  const handleResetFilters = () => {
+    setChecked([]);
+    setRadio([]);
+    getAllProducts();
+
+    // Reset checkboxes and radio buttons state
+    document.querySelectorAll('input[type="checkbox"]').forEach((el) => {
+      el.checked = false;
+    });
+
+    document.querySelectorAll('input[type="radio"]').forEach((el) => {
+      el.checked = false;
+    });
+  };
+
   useEffect(() => {
     if (!checked.length || !radio.length) getAllProducts();
   }, [checked.length, radio.length]);
@@ -174,6 +189,7 @@ const HomePage = () => {
               <Checkbox
                 key={c._id}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
+                checked={checked.includes(c._id)}
               >
                 {c.name}
               </Checkbox>
@@ -181,7 +197,10 @@ const HomePage = () => {
           </div>
           <h4 className="text-center mt-4">Filter By Price</h4>
           <div className="d-flex flex-column filter-font">
-            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+            <Radio.Group
+              onChange={(e) => setRadio(e.target.value)}
+              value={radio}
+            >
               {Prices?.map((p) => (
                 <div key={p._id}>
                   <Radio value={p.array}>{p.name}</Radio>
@@ -192,11 +211,7 @@ const HomePage = () => {
           <div className="d-flex flex-column">
             <button
               className="btn btn-danger filter-btn"
-              onClick={() => {
-                setChecked([]);
-                setRadio([]);
-                getAllProducts(); // Fetch all products without filters
-              }}
+              onClick={handleResetFilters}
             >
               RESET FILTERS
             </button>
@@ -205,15 +220,17 @@ const HomePage = () => {
 
         <div className="col-md-9">
           <div className="col-md-11">
-            <h1 className="p-2 text-black text-center all">
-              All Products
-            </h1>
+            <h1 className="p-2 text-black text-center all">All Products</h1>
           </div>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div
                 className="card m-2"
-                style={{ width: "18.5rem", marginRight: "15px", cursor: "pointer" }}
+                style={{
+                  width: "18.5rem",
+                  marginRight: "15px",
+                  cursor: "pointer",
+                }}
                 onClick={() => navigate(`/product/${p.slug}`)}
                 key={p._id}
               >
@@ -224,8 +241,12 @@ const HomePage = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text" style={{ color: "black" }}>Rs.{p.price}</p>
-                  <p className="card-text">{p.description.substring(0, 30)}...</p>
+                  <p className="card-text" style={{ color: "black" }}>
+                    Rs.{p.price}
+                  </p>
+                  <p className="card-text">
+                    {p.description.substring(0, 30)}...
+                  </p>
                   <button
                     className="btn btn-secondary ms-0"
                     onClick={(e) => {
@@ -240,7 +261,10 @@ const HomePage = () => {
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent card click event
                       setCart([...cart, p]);
-                      localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, p])
+                      );
                       toast.success("Item Added to cart");
                     }}
                   >
