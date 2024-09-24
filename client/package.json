@@ -13,6 +13,7 @@
     "antd": "^5.20.0",
     "axios": "^1.7.3",
     "bcrypt": "^5.1.1",
+    "braintree-web": "^3.107.1",
     "braintree-web-drop-in-react": "^1.2.1",
     "dotenv": "^16.4.5",
     "moment": "^2.30.1",

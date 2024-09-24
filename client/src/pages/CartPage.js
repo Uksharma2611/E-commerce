@@ -211,7 +211,7 @@ const CartPage = () => {
                 {!clientToken || !auth?.token || !cart?.length ? (
                   ""
                 ) : (
-                  <>
+                  <div style={{ padding: "20px", backgroundColor: "#fff" }}>
                     <DropIn
                       options={{
                         authorization: clientToken,
@@ -225,7 +225,7 @@ const CartPage = () => {
                     >
                       {loading ? "Processing ...." : "Make Payment"}
                     </button>
-                  </>
+                  </div>
                 )}
               </div>
             </div>
